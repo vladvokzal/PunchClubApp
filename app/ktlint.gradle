@@ -1,0 +1,40 @@
+def ktlintWarningLimit = 0
+
+task ktlint(type: JavaExec, group: "verification") {
+    description = "Check Kotlin code style."
+    main = "com.github.shyiko.ktlint.Main"
+    classpath = configurations.ktlint
+    ignoreExitValue true
+    args "src/**/*.kt", "--reporter=plain?group_by_file,output=ktlint.txt"
+    doLast {
+        def lines = 0
+        new File("app/ktlint.txt").eachLine { line ->
+            if (line[0] == " ") {
+                lines++
+            }
+        }
+        println "Ktlint result: found " + lines + " issues, limit = " + ktlintWarningLimit
+        def newWarnings = lines - ktlintWarningLimit
+        if (newWarnings > 0) {
+            printWarnings()
+            throw new GradleException("Found " + newWarnings + " warnings!!! You need to fix it =)")
+        }
+    }
+}
+
+task ktlintFormat(type: JavaExec, group: "formatting") {
+    description = "Fix Kotlin code style deviations."
+    main = "com.github.shyiko.ktlint.Main"
+    classpath = configurations.ktlint
+    args "-F", "src/**/*.kt"
+}
+
+static def printWarnings() {
+    println("--------- Warnings ---------")
+    def lintFile = new File("app/ktlint.txt")
+    def lines = lintFile.readLines()
+
+    for (line in lines) {
+        println(line)
+    }
+}
