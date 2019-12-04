@@ -26,4 +26,35 @@ class MapFragment : MvpAppCompatFragment(), ProfileView {
 
     private fun initUI() {
     }
+
+
+    override fun onResume() {
+        super.onResume()
+        binding.mapView.onResume()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        binding.mapView.onStart()
+    }
+
+    override fun onStop() {
+        binding.mapView.onStop()
+        super.onStop()
+    }
+
+    override fun onPause() {
+        binding.mapView.onPause()
+        super.onPause()
+    }
+
+    override fun onDestroy() {
+        binding.mapView.onDestroy()
+        super.onDestroy()
+    }
+
+    override fun onLowMemory() {
+        super.onLowMemory()
+        binding.mapView.onLowMemory()
+    }
 }

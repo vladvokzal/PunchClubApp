@@ -6,7 +6,19 @@
 
     <fragment
         android:id="@+id/map_fragment"
-        android:name="ru."
+        android:name="ru.nsu.lightweight.punchclub.map.MapFragment"
+        android:label="MapFragment"
+        tools:layout="@layout/fragment_map" />
+
+    <fragment
+        android:id="@+id/punch_list_fragment"
+        android:name="ru.nsu.lightweight.punchclub.punchlist.PunchListFragment"
+        android:label="MapFragment"
+        tools:layout="@layout/fragment_map" />
+
+    <fragment
+        android:id="@+id/profile_fragment"
+        android:name="ru.nsu.lightweight.punchclub.profile.ProfileFragment"
         android:label="MapFragment"
         tools:layout="@layout/fragment_map" />
 </navigation>
