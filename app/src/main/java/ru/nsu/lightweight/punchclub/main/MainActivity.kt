@@ -3,6 +3,7 @@ package ru.nsu.lightweight.punchclub.main
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.Navigation
 import androidx.navigation.ui.setupWithNavController
 import com.arellomobile.mvp.presenter.InjectPresenter
 import ru.nsu.lightweight.punchclub.R
@@ -22,6 +23,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initUI() {
-        binding.bottomNavigationView.setupWithNavController()
+        binding.bottomNavigationView.setupWithNavController(
+            Navigation.findNavController(
+                this,
+                R.id.main_nav_host_fragment
+            )
+        )
     }
 }

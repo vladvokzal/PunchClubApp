@@ -1,4 +1,4 @@
-package ru.nsu.lightweight.punchclub.map
+package ru.nsu.lightweight.punchclub.profile
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,9 +8,8 @@ import androidx.databinding.DataBindingUtil
 import com.arellomobile.mvp.MvpAppCompatFragment
 import ru.nsu.lightweight.punchclub.R
 import ru.nsu.lightweight.punchclub.databinding.FragmentMapBinding
-import ru.nsu.lightweight.punchclub.profile.ProfileView
 
-class MapFragment : MvpAppCompatFragment(), ProfileView {
+class ProfileFragment : MvpAppCompatFragment(), ProfileView {
 
     private lateinit var binding: FragmentMapBinding
 
@@ -19,7 +18,7 @@ class MapFragment : MvpAppCompatFragment(), ProfileView {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_map, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_placeholder, container, false)
         initUI()
         return binding.root
     }
