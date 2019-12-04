@@ -1,3 +1,7 @@
 <resources>
+
     <string name="app_name">PunchClub</string>
+    <string name="punch_list">Список противников</string>
+    <string name="map">Карта</string>
+    <string name="profile">Профиль</string>
 </resources>
