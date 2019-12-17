@@ -8,8 +8,7 @@ public class UseCaseHandler {
 
     public static UseCaseHandler getInstance(){
         if (instance == null){
-            //create executor and pass it to constructor
-            instance = new UseCaseHandler(null);
+            instance = new UseCaseHandler(new UseCaseThreadPoolScheduler());
         }
         return instance;
     }
@@ -17,6 +16,7 @@ public class UseCaseHandler {
     public <T extends UseCase.RequestValues, R extends UseCase.ResponseValues>
     void execute(final UseCase<T, R> useCase, T requestValues, IUseCaseCallback<R> callback){
         useCase.setRequestValues(requestValues);
+        
         useCaseScheduler.execute(new Runnable() {
             @Override
             public void run() {
