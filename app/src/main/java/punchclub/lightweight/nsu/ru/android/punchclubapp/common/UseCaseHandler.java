@@ -2,14 +2,21 @@ package punchclub.lightweight.nsu.ru.android.punchclubapp.common;
 
 public class UseCaseHandler {
 
-    public UseCaseHandler(IUseCaseScheduler scheduler) {
+    private UseCaseHandler(IUseCaseScheduler scheduler) {
         this.useCaseScheduler = scheduler;
+    }
+
+    public static UseCaseHandler getInstance(){
+        if (instance == null){
+            //create executor and pass it to constructor
+            instance = new UseCaseHandler(null);
+        }
+        return instance;
     }
 
     public <T extends UseCase.RequestValues, R extends UseCase.ResponseValues>
     void execute(final UseCase<T, R> useCase, T requestValues, IUseCaseCallback<R> callback){
         useCase.setRequestValues(requestValues);
-
         useCaseScheduler.execute(new Runnable() {
             @Override
             public void run() {
@@ -26,5 +33,6 @@ public class UseCaseHandler {
         useCaseScheduler.onError(useCaseCallback);
     }
 
+    private static UseCaseHandler instance;
     private final IUseCaseScheduler useCaseScheduler;
 }
