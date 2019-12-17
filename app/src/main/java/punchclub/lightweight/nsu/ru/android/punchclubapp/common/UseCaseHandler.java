@@ -16,7 +16,7 @@ public class UseCaseHandler {
     public <T extends UseCase.RequestValues, R extends UseCase.ResponseValues>
     void execute(final UseCase<T, R> useCase, T requestValues, IUseCaseCallback<R> callback){
         useCase.setRequestValues(requestValues);
-        
+
         useCaseScheduler.execute(new Runnable() {
             @Override
             public void run() {
