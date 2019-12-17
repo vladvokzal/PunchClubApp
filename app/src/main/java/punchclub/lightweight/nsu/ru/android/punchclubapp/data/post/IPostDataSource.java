@@ -1,4 +1,4 @@
-package punchclub.lightweight.nsu.ru.android.punchclubapp.data;
+package punchclub.lightweight.nsu.ru.android.punchclubapp.data.post;
 
 import punchclub.lightweight.nsu.ru.android.punchclubapp.model.Post;
 
