@@ -1,0 +1,30 @@
+package punchclub.lightweight.nsu.ru.android.punchclubapp.common;
+
+public class UseCaseHandler {
+
+    public UseCaseHandler(IUseCaseScheduler scheduler) {
+        this.useCaseScheduler = scheduler;
+    }
+
+    public <T extends UseCase.RequestValues, R extends UseCase.ResponseValues>
+    void execute(final UseCase<T, R> useCase, T requestValues, IUseCaseCallback<R> callback){
+        useCase.setRequestValues(requestValues);
+
+        useCaseScheduler.execute(new Runnable() {
+            @Override
+            public void run() {
+                useCase.run();
+            }
+        });
+    }
+
+    <T extends UseCase.ResponseValues> void notifyResponse(T response, IUseCaseCallback<T> useCaseCallback){
+        useCaseScheduler.onResponse(response, useCaseCallback);
+    }
+
+    <T extends UseCase.ResponseValues> void notifyError(IUseCaseCallback<T> useCaseCallback){
+        useCaseScheduler.onError(useCaseCallback);
+    }
+
+    private final IUseCaseScheduler useCaseScheduler;
+}
