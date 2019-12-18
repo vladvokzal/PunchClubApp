@@ -56,6 +56,7 @@ public class Post {
     public int getImageLink() {
         return imageLink;
     }
+
     public String getName() {
         return name;
     }
@@ -63,9 +64,9 @@ public class Post {
     public void setName(String name) {
         this.name = name;
     }
+
     private UUID channelUuid;
     private UUID uuid;
-
 
 
     private String name;
