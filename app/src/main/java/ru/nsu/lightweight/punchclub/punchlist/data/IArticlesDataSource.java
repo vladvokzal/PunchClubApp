@@ -1,17 +1,17 @@
 package ru.nsu.lightweight.punchclub.punchlist.data;
 
-import ru.nsu.lightweight.punchclub.punchlist.model.Post;
-
 import java.util.List;
 import java.util.UUID;
 
+import ru.nsu.lightweight.punchclub.punchlist.model.Post;
+
 public interface IArticlesDataSource {
 
-    interface ILoadArticlesCallback{
+    interface ILoadArticlesCallback {
         void onArticlesLoaded(List<Post> posts);
     }
 
-    interface ILoadArticleCallback{
+    interface ILoadArticleCallback {
         void onArticleLoaded(Post post);
     }
 
