@@ -1,7 +1,7 @@
 package ru.nsu.lightweight.punchclub.main
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import androidx.navigation.ui.setupWithNavController
