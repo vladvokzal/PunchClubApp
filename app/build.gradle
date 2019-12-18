@@ -4,9 +4,22 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: "org.sonarqube"
+
+sonarqube {
+    properties {
+        property "sonar.projectName", "PunchClub"
+        property "sonar.projectKey", "PC"
+        property "sonar.host.url", "http://84.237.50.237:9000"
+        property "sonar.language", "java"
+        property "sonar.sources", "src/main/"
+        property "sonar.login", "85aa895f5d3db5ae1a05fb9668880a94c7003e6c"
+    }
+}
+
 android {
     compileSdkVersion 29
-    buildToolsVersion "29.0.0"
+    buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "ru.nsu.lightweight.punchclub"
         minSdkVersion 21
@@ -23,6 +36,7 @@ android {
 
     configurations {
         ktlint
+        jacoco
     }
 
     dataBinding {
@@ -30,10 +44,20 @@ android {
     }
 
     buildTypes {
+        debug {
+            testCoverageEnabled = true
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+
+    defaultConfig {
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    testOptions {
+        unitTests.returnDefaultValues = true
     }
 
     packagingOptions {
@@ -48,11 +72,11 @@ androidExtensions {
 }
 
 dependencies {
-    kapt 'androidx.databinding:databinding-common:4.0.0-alpha04'
+    kapt 'androidx.databinding:databinding-common:4.0.0-alpha06'
     implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
-    implementation 'com.android.support.constraint:constraint-layout:2.0.0-beta3'
+    implementation 'com.android.support.constraint:constraint-layout:2.0.0-beta4'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
@@ -70,9 +94,9 @@ dependencies {
     implementation 'tech.schoolhelper:moxy-x-material:1.7.0'
 
     /* Retrofit + gson + okhttp */
-    implementation 'com.squareup.retrofit2:retrofit:2.6.2'
-    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.6.2'
-    implementation 'com.squareup.retrofit2:converter-gson:2.6.2'
+    implementation 'com.squareup.retrofit2:retrofit:2.7.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.7.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.7.0'
     implementation 'com.facebook.stetho:stetho-okhttp3:1.5.1'
 
     /* ktlint */
@@ -86,11 +110,11 @@ dependencies {
 
     /* Google maps */
     implementation 'com.google.android.gms:play-services-maps:17.0.0'
-    implementation 'com.google.maps.android:android-maps-utils:0.5'
+    implementation 'com.google.maps.android:android-maps-utils:0.6.2'
 
     /* Firebase sdk */
     implementation 'com.google.firebase:firebase-core:17.2.1'
-    implementation 'com.google.firebase:firebase-messaging:20.0.1'
+    implementation 'com.google.firebase:firebase-messaging:20.1.0'
     implementation 'com.google.firebase:firebase-analytics:17.2.1'
 
     /* Material design */
@@ -104,15 +128,9 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.10.0'
 
     /* Jetpack */
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.2.0-rc02'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.2.0-rc02'
-
-    /* Worker */
-    implementation "androidx.work:work-runtime-ktx:2.2.0"
-
-    /* Carousel */
-    implementation 'com.synnapps:carouselview:0.1.5'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.2.0-rc03'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.2.0-rc03'
 }
 
+apply from: 'jacoco.gradle'
 apply from: 'ktlint.gradle'
-apply plugin: 'com.google.gms.google-services'
