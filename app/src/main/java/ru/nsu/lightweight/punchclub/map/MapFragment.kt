@@ -27,7 +27,6 @@ class MapFragment : MvpAppCompatFragment(), ProfileView {
     private fun initUI() {
     }
 
-
     override fun onResume() {
         super.onResume()
         binding.mapView.onResume()
