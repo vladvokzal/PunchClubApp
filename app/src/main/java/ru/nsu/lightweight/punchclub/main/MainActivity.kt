@@ -9,7 +9,7 @@ import com.arellomobile.mvp.presenter.InjectPresenter
 import ru.nsu.lightweight.punchclub.R
 import ru.nsu.lightweight.punchclub.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), MainView {
 
     @InjectPresenter
     lateinit var presenter: MainPresenter
