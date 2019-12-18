@@ -1,0 +1,19 @@
+image: jangrewe/gitlab-ci-android
+
+stages:
+  - ktlint
+  - tests
+
+before_script:
+  - export GRADLE_USER_HOME=$(pwd)/.gradle
+  - chmod +x ./gradlew
+
+unitTests:
+  stage: tests
+  script:
+    - ./gradlew testDebugUnitTest
+
+lint:
+  stage: tests
+  script:
+    - ./gradlew ktlint

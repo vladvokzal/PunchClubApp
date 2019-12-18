@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "53438681466",
+    "firebase_url": "https://punch-club-89e3c.firebaseio.com",
+    "project_id": "punch-club-89e3c",
+    "storage_bucket": "punch-club-89e3c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:53438681466:android:9fc1801f010a4dac9c46c3",
+        "android_client_info": {
+          "package_name": "ru.nsu.lightweight.punchclub"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "53438681466-i2gir52s0js709bn8999e3rigtoluavs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ru.nsu.lightweight.punchclub",
+            "certificate_hash": "c1f9d646e27b173f684875c948b7b0b18549f28c"
+          }
+        },
+        {
+          "client_id": "53438681466-92cir454ed0dreu0cmuapv9tmm0oeon0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2702K1SqkXXArtSt5lhnfk3HF0SIa_jk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "53438681466-92cir454ed0dreu0cmuapv9tmm0oeon0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
