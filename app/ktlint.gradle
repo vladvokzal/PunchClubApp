@@ -1,4 +1,4 @@
-def ktlintWarningLimit = 2
+def ktlintWarningLimit = 0
 
 task ktlint(type: JavaExec, group: "verification") {
     description = "Check Kotlin code style."
