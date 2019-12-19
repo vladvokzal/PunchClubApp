@@ -5,6 +5,7 @@
 
     <application
         android:allowBackup="true"
+        android:fullBackupContent="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -21,5 +22,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".profile.ProfileActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".punchlist.PunchListActivity"
+            android:screenOrientation="portrait" />
     </application>
 </manifest>
