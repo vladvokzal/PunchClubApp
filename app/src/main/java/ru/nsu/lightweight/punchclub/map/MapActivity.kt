@@ -63,6 +63,6 @@ class MapActivity : MvpAppCompatActivity(), MapView, OnMapReadyCallback,
     }
 
     override fun onMarkerClick(p0: Marker?): Boolean {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        TODO("not implemented") // To change body of created functions use File | Settings | File Templates.
     }
 }
