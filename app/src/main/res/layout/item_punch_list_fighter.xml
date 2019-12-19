@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/darker_gray"
+            android:padding="16dp"
+            app:cardCornerRadius="16dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/avatar"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:riv_oval="true"
+                    tools:src="@drawable/ic_android" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/avatar"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Влад Войтенко" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/description"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:ellipsize="end"
+                    android:maxLines="3"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/avatar"
+                    app:layout_constraintTop_toBottomOf="@id/name"
+                    tools:text="Я бью женщин и детей, потому что я красавчик, потому что я сильней, так я самоутверждаюсь. Да бью женщин и детей, потому что я красавчик, потому что я сильней, а они не могут сдачи дать" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </FrameLayout>
+</layout>
