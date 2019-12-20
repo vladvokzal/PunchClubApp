@@ -1,14 +1,17 @@
 package ru.nsu.lightweight.punchclub.map
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import com.arellomobile.mvp.MvpAppCompatActivity
+import com.arellomobile.mvp.presenter.InjectPresenter
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import ru.nsu.lightweight.punchclub.R
+import ru.nsu.lightweight.punchclub.dataBase.fighter.Fighter
 import ru.nsu.lightweight.punchclub.databinding.ActivityMapBinding
 import ru.nsu.lightweight.punchclub.profile.ProfileActivity
 import ru.nsu.lightweight.punchclub.punchlist.PunchListActivity
@@ -18,6 +21,8 @@ import ru.nsu.lightweight.punchclub.utils.RouterUtil
 class MapActivity : MvpAppCompatActivity(), MapView, OnMapReadyCallback,
     GoogleMap.OnMarkerClickListener {
 
+    @InjectPresenter
+    lateinit var presenter: MapPresenter
     private lateinit var binding: ActivityMapBinding
     private lateinit var map: Map<BaseMarker>
 
@@ -29,7 +34,7 @@ class MapActivity : MvpAppCompatActivity(), MapView, OnMapReadyCallback,
     }
 
     private fun initUI() {
-        val map = supportFragmentManager.findFragmentById(R.id.map_fragment) as SupportMapFragment
+        val map = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         map.getMapAsync(this)
 
         RouterUtil.onceClickListener(binding.punchListButton) {
@@ -56,6 +61,10 @@ class MapActivity : MvpAppCompatActivity(), MapView, OnMapReadyCallback,
         map.moveTo(latLng, isAnimate, zoom)
     }
 
+    override fun setFighters(fighters: List<Fighter>) {
+        map.updateVisibleMarkers(fighters.map { it.toMarker() })
+    }
+
     override fun onMapReady(googleMap: GoogleMap) {
         val controller = MapController<BaseMarker>(this)
         controller.onAttachMainMap(googleMap)
@@ -63,6 +72,10 @@ class MapActivity : MvpAppCompatActivity(), MapView, OnMapReadyCallback,
     }
 
     override fun onMarkerClick(p0: Marker?): Boolean {
-        TODO("not implemented") // To change body of created functions use File | Settings | File Templates.
+        p0 ?: return true
+        val intent = Intent(this, ProfileActivity::class.java)
+        intent.putExtra("ARG_ID_FIGHTER", p0.title.toLong())
+        RouterUtil.startIntent(intent, this, Animation.SLIDE_IN)
+        return true
     }
 }

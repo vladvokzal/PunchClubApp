@@ -9,7 +9,7 @@ apply plugin: "org.sonarqube"
 sonarqube {
     properties {
         property "sonar.projectName", "PunchClub"
-        property "sonar.projectKey", "PC"
+        property "sonar.projectKey", "PUN"
         property "sonar.host.url", "http://84.237.50.237:9000"
         property "sonar.language", "java"
         property "sonar.sources", "src/main/"

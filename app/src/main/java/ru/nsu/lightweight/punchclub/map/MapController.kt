@@ -2,11 +2,9 @@ package ru.nsu.lightweight.punchclub.map
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
-import ru.nsu.lightweight.punchclub.R
 
 class MapController<T : BaseMarker>(
     private val onMarkerClickListener: GoogleMap.OnMarkerClickListener
@@ -26,7 +24,6 @@ class MapController<T : BaseMarker>(
 
     override fun addMarker(marker: T) {
         val markerOptions = MarkerOptions().apply {
-            icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_place))
             position(marker.latLng)
             title(marker.id.toString())
         }
