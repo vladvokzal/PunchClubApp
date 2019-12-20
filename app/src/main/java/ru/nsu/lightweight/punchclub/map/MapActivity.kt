@@ -29,7 +29,7 @@ class MapActivity : MvpAppCompatActivity(), MapView, OnMapReadyCallback,
     }
 
     private fun initUI() {
-        val map = supportFragmentManager.findFragmentById(R.id.map_fragment) as SupportMapFragment
+        val map = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         map.getMapAsync(this)
 
         RouterUtil.onceClickListener(binding.punchListButton) {
