@@ -1,3 +1,3 @@
 # PunchClubApp
-Application for android platform
+Application for android platform,
 Designed specifically for "UPPRPO"
